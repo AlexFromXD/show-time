@@ -2,7 +2,11 @@
 	"name": "showtime",
 	"displayName": "ShowTime",
 	"description": "convert unix timestamp to readable datetime",
-	"version": "0.0.1",
+	"version": "0.0.2",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/AlexFromXD/show-time.git"
+	},
 	"engines": {
 		"vscode": "^1.41.0"
 	},
