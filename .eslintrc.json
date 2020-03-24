@@ -1,19 +1,56 @@
 {
-    "root": true,
     "parser": "@typescript-eslint/parser",
+    "extends": ["plugin:@typescript-eslint/recommended"],
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "plugins": [
-        "@typescript-eslint"
-    ],
     "rules": {
-        "@typescript-eslint/class-name-casing": "warn",
-        "@typescript-eslint/semi": "warn",
-        "curly": "warn",
-        "eqeqeq": "warn",
-        "no-throw-literal": "warn",
-        "semi": "off"
+        "indent": ["error", 2, {
+            "SwitchCase": 1
+        }],
+        "semi": ["error", "never"],
+        "quotes": ["error", "single", {
+            "allowTemplateLiterals": true
+        }],
+        "no-multiple-empty-lines": ["error", {
+            "max": 1,
+            "maxEOF": 1
+        }],
+        "object-curly-spacing": ["error", "always"],
+        "no-empty-function": "off",
+        "comma-spacing": ["error", {
+            "before": false,
+            "after": true
+        }],
+        "key-spacing": ["error", {
+            "beforeColon": false,
+            "afterColon": true
+        }],
+        "semi-spacing": [1, {
+            "before": false,
+            "after": true
+        }],
+        "@typescript-eslint/semi": ["error", "never", {
+            "beforeStatementContinuationChars": "always"
+        }],
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/ban-ts-ignore": "off",
+        "@typescript-eslint/space-before-function-paren": ["error", "always"],
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-inferrable-types": [
+            "warn", {
+                "ignoreParameters": true
+            }
+        ],
+        "@typescript-eslint/no-use-before-define": ["error", {
+            "functions": false
+        }],
+        "@typescript-eslint/camelcase": ["error", {
+            "properties": "never"
+        }]
     }
 }
