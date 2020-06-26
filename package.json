@@ -3,7 +3,7 @@
 	"displayName": "ShowTime",
 	"description": "convert unix timestamp to readable datetime",
 	"version": "0.0.3",
-	"icon": "./time.png",
+	"icon": "time.png",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/AlexFromXD/show-time.git"
