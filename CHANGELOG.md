@@ -2,6 +2,12 @@
 
 All notable changes to the "showtime" extension will be documented in this file.
 
+## [0.0.4] - 2020-0701
+
+Changed
+
+- Use hover message to present convert result, so we don't need trigger anymore
+
 ## [0.0.3] - 2020-06-26
 
 Added

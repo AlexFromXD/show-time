@@ -2,7 +2,7 @@
 	"name": "showtime",
 	"displayName": "ShowTime",
 	"description": "convert unix timestamp to readable datetime",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"icon": "time.png",
 	"repository": {
 		"type": "git",
@@ -21,7 +21,7 @@
 		"time"
 	],
 	"activationEvents": [
-		"onCommand:extension.showTime"
+		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -29,14 +29,6 @@
 			{
 				"command": "extension.showTime",
 				"title": "Show Time"
-			}
-		],
-		"keybindings": [
-			{
-				"command": "extension.showTime",
-				"key": "alt+d",
-				"mac": "cmd+d",
-				"when": "editorTextFocus"
 			}
 		]
 	},

@@ -1,27 +1,25 @@
-import { commands, ExtensionContext, window } from 'vscode'
+import { Hover, languages, MarkdownString, window } from 'vscode'
 import { parseFocusLine } from './util'
 
-export function activate (context: ExtensionContext) {
+export function activate () {
+  languages.registerHoverProvider('*', {
+    provideHover (document) {
+      const currentEditor = window.activeTextEditor
+      if (!currentEditor) return
 
-  const disposable = commands.registerCommand('extension.showTime', () => {
+      const focus = currentEditor.selection
+      if (!focus || !focus.isSingleLine) return
 
-    const currentEditor = window.activeTextEditor
-    if (!currentEditor) return
+      const focusLine = document.lineAt(focus.start.line).text
+      if (!focusLine) return
 
-    const focus = currentEditor.selection
-    if (!focus || !focus.isSingleLine) return
-
-    const document = currentEditor.document
-    if (!document) return
-
-    const focusLine = document.lineAt(focus.start.line).text
-    if (!focusLine) return
-
-    const msg = parseFocusLine(focusLine)
-    if (msg) window.showInformationMessage(msg)
+      const d = parseFocusLine(focusLine)
+      const msg: Array<MarkdownString> = []
+      if (d.timestamp) msg.push(new MarkdownString(`### timestamp: ${d.timestamp}`))
+      if (d.datetime) msg.push(new MarkdownString(`### ${d.datetime}`))
+      if (msg.length) return new Hover(msg)
+    }
   })
-
-  context.subscriptions.push(disposable)
 }
 
 export function deactivate () {}
