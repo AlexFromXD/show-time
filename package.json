@@ -35,10 +35,10 @@
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
-		"lint": "eslint src --ext ts",
+		"lint": "eslint src --ext ts --fix",
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile && npm run lint",
-		"test": "node ./out/test/runTest.js"
+		"test": "npm run pretest && node ./out/test/runTest.js"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
@@ -49,9 +49,9 @@
 		"@typescript-eslint/parser": "^2.18.0",
 		"eslint": "^6.8.0",
 		"glob": "^7.1.6",
-		"mocha": "^8.0.1",
-		"typescript": "^3.7.5",
-		"vscode-test": "^1.3.0"
+		"mocha": "^8.3.2",
+		"typescript": "^3.9.9",
+		"vscode-test": "^1.5.2"
 	},
 	"publisher": "AlexFromXD"
 }

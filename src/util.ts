@@ -8,40 +8,41 @@ function getDateString (d: Date): string {
 }
 
 type ParseResult = {
+  origin: string;
   datetime?: string;
   timestamp?: number;
 }
 
-export function parseFocusLine (line: string): ParseResult {
-  const lineIncludes10Number = line.match(/\d{10}/)
-  if (lineIncludes10Number) {
-    return {
-      datetime: getDateString (new Date(Number(lineIncludes10Number[0]) * 1000))
-    }
-  }
-  const lineIncludes13Number = line.match(/\d{13}/)
-  if (lineIncludes13Number) {
-    console.log(lineIncludes13Number)
-    return {
-      datetime: getDateString(new Date(lineIncludes13Number[0]))
-    }
+export function parseFocusLine (line: string): ParseResult[] {
+  const tsList = line.match(/\d{13}|\d{10}/g)
+  if (tsList) {
+    return tsList.map(ts => {
+      return {
+        origin: ts,
+        datetime: ts.length === 10
+          ? getDateString(new Date(Number(ts) * 1000))
+          : getDateString(new Date(Number(ts)))
+      }
+    })
   }
 
   const lineIncludeNow = line.match(/now/)
   if (lineIncludeNow) {
     const now = Date.now()
-    return {
+    return [{
+      origin: 'now',
       datetime: getDateString(new Date(now)),
       timestamp: now / 1000
-    }
+    }]
   }
 
   const timestamp = Date.parse(line)
   if (timestamp) {
-    return {
+    return [{
+      origin: line,
       timestamp: timestamp / 1000
-    }
+    }]
   }
 
-  return {}
+  return []
 }

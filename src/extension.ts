@@ -10,16 +10,25 @@ export function activate () {
       const focus = currentEditor.selection
       if (!focus || !focus.isSingleLine) return
 
-      const focusLine = document.lineAt(focus.start.line).text
-      if (!focusLine) return
+      const { text } = document.lineAt(focus.start.line)
+      if (!text) return
 
-      const d = parseFocusLine(focusLine)
-      const msg: Array<MarkdownString> = []
-      if (d.timestamp) msg.push(new MarkdownString(`### timestamp: ${d.timestamp}`))
-      if (d.datetime) msg.push(new MarkdownString(`### ${d.datetime}`))
-      if (msg.length) return new Hover(msg)
+      const timeList = parseFocusLine(text)
+      const mdList: MarkdownString[] = []
+      for (const time of timeList) {
+        const md = new MarkdownString(`### ${time.origin}\n`)
+        if (time.datetime) {
+          md.appendMarkdown(`#### ${time.datetime}\n`)
+        }
+        if (time.timestamp) {
+          md.appendMarkdown(`#### ${time.timestamp}\n`)
+        }
+        mdList.push(md)
+      }
+
+      if (mdList.length) return new Hover(mdList)
     }
   })
 }
 
-export function deactivate () {}
+export function deactivate () { }

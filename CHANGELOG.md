@@ -2,7 +2,14 @@
 
 All notable changes to the "showtime" extension will be documented in this file.
 
-## [0.0.4] - 2020-0701
+## [0.0.5] - 2021-05-02
+
+Fixed
+
+- Fix bug of multiple timestamp in the same line
+
+
+## [0.0.4] - 2020-07-01
 
 Changed
 
