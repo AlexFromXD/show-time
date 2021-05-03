@@ -2,8 +2,8 @@
 	"name": "showtime",
 	"displayName": "ShowTime",
 	"description": "convert unix timestamp to readable datetime",
-	"version": "0.0.4",
-	"icon": "time.png",
+	"version": "0.0.2",
+	"icon": "image/icon.png",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/AlexFromXD/show-time.git"
@@ -41,17 +41,17 @@
 		"test": "npm run pretest && node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^7.0.1",
-		"@types/node": "^12.11.7",
 		"@types/vscode": "^1.41.0",
-		"@typescript-eslint/eslint-plugin": "^2.18.0",
-		"@typescript-eslint/parser": "^2.18.0",
-		"eslint": "^6.8.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.19.0",
+		"@typescript-eslint/eslint-plugin": "^4.14.1",
+		"@typescript-eslint/parser": "^4.14.1",
 		"glob": "^7.1.6",
-		"mocha": "^8.3.2",
-		"typescript": "^3.9.9",
-		"vscode-test": "^1.5.2"
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
 	},
 	"publisher": "AlexFromXD"
 }
